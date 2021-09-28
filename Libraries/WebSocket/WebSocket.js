@@ -240,9 +240,11 @@ class WebSocket extends (EventTarget(...WEBSOCKET_EVENTS): any) {
         this.dispatchEvent(new WebSocketEvent('open'));
       }),
       this._eventEmitter.addListener('websocketClosed', ev => {
-        if (ev.id !== this._socketId) {
+        console.log('ev.id', ev.id);
+        console.log('this._socketId', this._socketId)
+        /*if (ev.id !== this._socketId) {
           return;
-        }
+        }*/
         this.readyState = this.CLOSED;
         this.dispatchEvent(
           new WebSocketEvent('close', {
